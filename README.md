@@ -18,5 +18,5 @@ la interpolación busca un polinomio P(x) que pase exactamente por todos esos pu
 $$ \Delta\ y_1 = y_{i+1} - y_i\ \text{(orden 1)} $$
 $$ \Delta\ y_1 = \Delta\ y_{i+1} - \Delta\ y_i\ \text{(orden 2)} $$
 $$ \text{fórmula general:} $$
-$$ \Delta^k y_i = \Delta^{k-1} y_{i+1} - \Delta^{k-1} y_i $$
+$$ \Delta^k y_i = \Delta^{k-1} y_{i+1} - \Delta^{k-1} y_i\ \text{(orden k)} $$
 
