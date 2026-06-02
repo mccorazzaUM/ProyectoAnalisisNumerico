@@ -1,7 +1,7 @@
 <div align=center>
 
 # Interpolación de Newton con Diferencias No Divididas
-### María Cecilia Corazza, Navarro Melina
+### María Cecilia Corazza, Melina Navarro
 ---
 
 </div>
