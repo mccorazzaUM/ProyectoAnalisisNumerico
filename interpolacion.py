@@ -72,8 +72,21 @@ def imprimir_tabla(x, tabla):
             fila += f"{tabla[i][j]:>{ancho}.4f}"
         print(fila)
 
-# INTERPOLACION
-def interpolar(x, y, valor, metodo):
+# FUNCION PRINCIPAL
+
+if __name__ == "__main__":
+    print("\n" + "=" * 60)
+    print(" INTERPOLACIÓN DE NEWTON - DIFERENCIAS NO DIVIDIDAS")
+    print("=" * 60)
+    
+    n = int(input("Cuantos puntos (x, y) vas a ingresar? "))
+    x, y = [], []
+    for i in range(n):
+        xi = float(input(f"  x[{i}] = "))
+        yi = float(input(f"  y[{i}] = "))
+        x.append(xi)
+        y.append(yi)
+    valor = float(input("Valor de x a interpolar: "))
     h = calcular_paso(x)
     tabla = construir_tabla_diferencias(y)
 
@@ -84,8 +97,9 @@ def interpolar(x, y, valor, metodo):
     else:
         raise ValueError("metodo debe ser 'adelante' o 'atras'.")
 
-    return resultado, h, tabla, metodo, s
+    print(f"\nPaso h = {h}")
+    imprimir_tabla(x, tabla)
 
-
-if __name__ == "__main__":
-  # todavia no terminamos aaa
+    print(f"Variable s = {s:.6f}")
+    print(f"\n>>> P({valor}) ≈ {resultado:.6f}")
+    print("=" * 60 + "\n")
