@@ -1,5 +1,6 @@
 from math import factorial
 
+# CALCULAR PASO (H)
 def calcular_paso(x, tolerancia=1e-9):
     if len(x) < 2:
         raise ValueError("Se necesitan al menos 2 puntos.")
@@ -40,6 +41,37 @@ def newton_atras(x, tabla, h, valor):
         resultado += termino
 
     return resultado, s
+
+# FUNCIONES PARA CONSTRUIR LA TABLA
+def construir_tabla_diferencias(y):
+    n = len(y)
+    tabla = [[0.0] * n for _ in range(n)]
+
+    for i in range(n):
+        tabla[i][0] = y[i]
+
+    for j in range(1, n):
+        for i in range(n - j):
+            tabla[i][j] = tabla[i + 1][j - 1] - tabla[i][j - 1]
+
+    return tabla
+
+def imprimir_tabla(x, tabla):
+    n = len(x)
+    ancho = 12
+
+    encabezado = f"{'x':>{ancho}}{'y':>{ancho}}"
+    for j in range(1, n):
+        encabezado += f"{'Δ^' + str(j) + 'y':>{ancho}}"
+    print(encabezado)
+    print("-" * len(encabezado))
+    
+    for i in range(n):
+        fila = f"{x[i]:>{ancho}.4f}{tabla[i][0]:>{ancho}.4f}"
+        for j in range(1, n - i):
+            fila += f"{tabla[i][j]:>{ancho}.4f}"
+        print(fila)
+
 
 
 if __name__ == "__main__":
