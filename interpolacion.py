@@ -72,6 +72,19 @@ def imprimir_tabla(x, tabla):
             fila += f"{tabla[i][j]:>{ancho}.4f}"
         print(fila)
 
+# INTERPOLACION
+def interpolar(x, y, valor, metodo):
+    h = calcular_paso(x)
+    tabla = construir_tabla_diferencias(y)
+
+    if metodo == "adelante":
+        resultado, s = newton_adelante(x, tabla, h, valor)
+    elif metodo == "atras":
+        resultado, s = newton_atras(x, tabla, h, valor)
+    else:
+        raise ValueError("metodo debe ser 'adelante' o 'atras'.")
+
+    return resultado, h, tabla, metodo, s
 
 
 if __name__ == "__main__":
