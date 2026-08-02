@@ -6,7 +6,7 @@ def newton_adelante(x, tabla, h, valor):
     s = (valor - x[0]) / h
 
     resultado = tabla[0][0]      # primer termino: y0
-    producto = 1.0               # ira acumulando s(s-1)(s-2)...
+    producto = 1.0             
 
     for j in range(1, n):
         producto *= (s - (j - 1))                  # factor nuevo
@@ -41,9 +41,6 @@ def calcular_paso(x, tolerancia=1e-9):
         if abs(paso_actual - h) > tolerancia:
             raise ValueError(
                 "Los nodos NO estan igualmente espaciados. "
-                "Use el metodo de diferencias DIVIDIDAS en su lugar.\n"
-                f"  Se esperaba h = {h}, pero entre x[{i-1}] y x[{i}] "
-                f"el paso es {paso_actual}."
             )
     return h
 
