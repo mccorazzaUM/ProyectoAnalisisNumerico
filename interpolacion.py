@@ -136,6 +136,15 @@ def cargar_datos_ejemplo():
         print(f"    segundo {xi:>3} -> {yi:>6.1f} m")
     return x, y
 
+def cargar_datos_ejemplo2():
+    x = [0, 5, 10, 15, 20]
+    y = [95.0, 110.0, 140.0, 195.0, 280.0]
+    print("\nDataset de ejemplo cargado (Monitoreo de un servidor web):")
+    print("  Minuto de monitoreo -> Tiempo de respuesta promedio (ms)")
+    for xi, yi in zip(x, y):
+        print(f"    minuto {int(xi):>3} -> {yi:>6.1f} ms")
+        print(f"    segundo {xi:>3} -> {yi:>6.1f} m")
+    return x, y
 
 def main():
     print("\n" + "=" * 70)
