@@ -8,6 +8,7 @@ def calcular_paso(x, tolerancia=1e-9):
     h = x[1] - x[0]
     if abs(h) < tolerancia:
         raise ValueError(
+
             "Los valores de x no pueden repetirse."
         )
 
@@ -126,24 +127,23 @@ def cargar_datos_manual():
 
 
 def cargar_datos_ejemplo():
-    x = [0, 5, 10, 15, 20]
-    y = [95.0, 110.0, 140.0, 195.0, 280.0]
-    print("\nDataset de ejemplo cargado (Monitoreo de un servidor web):")
-    print("  Minuto de monitoreo -> Tiempo de respuesta promedio (ms)")
+    print("EJERCICIO 7 DEL PRÁCTICO DADO POR LA CÁTEDRA")
+    print("Se midió la posición de un avión de combate durante su aterrizaje en la cubierta de un portaviones obteniendo los siguientes datos")
+    x = [0, 0.52, 1.04, 1.56, 2.08, 2.6, 3.12]
+    y = [153.0, 185.0, 210.0, 249.0, 261.0, 271.0, 273.0]
+    print("  Tiempo -> Posición del avión (m)")
     for xi, yi in zip(x, y):
-        print(f"    minuto {int(xi):>3} -> {yi:>6.1f} ms")
+        print(f"    segundo {xi:>3} -> {yi:>6.1f} m")
     return x, y
 
 
 def main():
     print("\n" + "=" * 70)
     print(" INTERPOLACION DE NEWTON - DIFERENCIAS NO DIVIDIDAS")
-    print(" Caso de aplicacion: Prediccion del tiempo de respuesta de un servidor")
     print("=" * 70)
 
     modo = pedir_opcion(
-        "\nQuerés usar el dataset de ejemplo (monitoreo de servidor) o cargar "
-        "datos propios?\n  [ejemplo/manual]: ",
+        "\nQuerés usar el ejemplo (ejercicio 7 del trabajo práctico) o cargar datos propios?\n  [ejemplo/manual]: ",
         ["ejemplo", "manual"],
     )
 
@@ -167,9 +167,7 @@ def main():
     if valor < min(x) or valor > max(x):
         print(
             f"  -> Aviso: {valor} esta fuera del rango monitoreado "
-            f"[{min(x)}, {max(x)}] minutos. El resultado sera una "
-            "PREDICCION/extrapolacion, valida solo para el corto plazo "
-            "inmediato posterior al ultimo dato."
+            f"[{min(x)}, {max(x)}] minutos."
         )
 
     metodo = pedir_opcion(
@@ -191,11 +189,10 @@ def main():
     imprimir_tabla(x, tabla, nombre_x="t(min)", nombre_y="t.resp(ms)")
 
     print(f"\nVariable s = {s:.6f}")
-    print(f">>> P({valor}) ≈ {resultado:.6f}")
+    print(f"P({valor}) ≈ {resultado:.6f}")
     if modo == "ejemplo":
-        etiqueta = "prediccion" if valor > max(x) else "estimacion"
-        print(f">>> Interpretacion: en el minuto {valor:.1f}, la {etiqueta} del")
-        print(f"    tiempo de respuesta del servidor es {resultado:.2f} ms.")
+        etiqueta = "posición" if valor > max(x) else "estimacion"
+        print(f"Interpretacion: en el segundo {valor:.1f}, la {etiqueta} del avión es de {resultado:.2f} metros.")
     print("=" * 70 + "\n")
 
 
