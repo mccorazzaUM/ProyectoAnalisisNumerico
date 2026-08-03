@@ -125,18 +125,7 @@ def cargar_datos_manual():
         y.append(yi)
     return x, y
 
-
 def cargar_datos_ejemplo():
-    print("EJERCICIO 7 DEL PRÁCTICO DADO POR LA CÁTEDRA")
-    print("Se midió la posición de un avión de combate durante su aterrizaje en la cubierta de un portaviones obteniendo los siguientes datos")
-    x = [0, 0.52, 1.04, 1.56, 2.08, 2.6, 3.12]
-    y = [153.0, 185.0, 210.0, 249.0, 261.0, 271.0, 273.0]
-    print("  Tiempo -> Posición del avión (m)")
-    for xi, yi in zip(x, y):
-        print(f"    segundo {xi:>3} -> {yi:>6.1f} m")
-    return x, y
-
-def cargar_datos_ejemplo2():
     x = [0, 5, 10, 15, 20]
     y = [95.0, 110.0, 140.0, 195.0, 280.0]
     print("\nDataset de ejemplo cargado (Monitoreo de un servidor web):")
