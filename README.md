@@ -67,6 +67,8 @@ $$P(22) \approx 184.36 \text{ ms}$$
 
 un valor coherente porque cae entre las mediciones del minuto 20 (172 ms) y del minuto 25 (205 ms). El gráfico siguiente muestra los 10 puntos medidos, el polinomio aproximante $P(x)$ que pasa exactamente por todos ellos, y la estimación obtenida:
 
+![grafico p(x)](GRAFIC~1.PNG)
+
 # Estructura del Proyecto
 
 El programa consta de las siguientes funciones matemáticas:
