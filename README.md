@@ -24,6 +24,13 @@ $$\Delta y_i = y_{i+1} - y_i \quad\text{(orden 1)}$$
 $$\Delta^2 y_i = \Delta y_{i+1} - \Delta y_i \quad\text{(orden 2)}$$
 $$\Delta^k y_i = \Delta^{k-1} y_{i+1} - \Delta^{k-1} y_i \quad\text{(orden } k\text{)}$$
 
+
+### Diferencias hacia atrás
+
+$$\nabla y_i = y_i - y_{i-1} \quad\text{(orden 1)}$$
+$$\nabla^2 y_i = \nabla y_i - \nabla y_{i-1} \quad\text{(orden 2)}$$
+$$\nabla^k y_i = \nabla^{k-1} y_i - \nabla^{k-1} y_{i-1} \quad\text{(orden k)}$$
+
 Para simplificar la fórmula se hace un cambio de variable que mide a cuántos pasos h está el punto buscado respecto del nodo de referencia:
 
 - Hacia adelante (referencia $x_0$): $\quad s = \dfrac{x - x_0}{h}$
