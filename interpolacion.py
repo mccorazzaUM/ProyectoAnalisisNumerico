@@ -1,4 +1,4 @@
-	from math import factorial
+from math import factorial
 
 
 def calcular_paso(x, tolerancia=1e-9):
@@ -8,7 +8,6 @@ def calcular_paso(x, tolerancia=1e-9):
     h = x[1] - x[0]
     if abs(h) < tolerancia:
         raise ValueError(
-            "Los dos primeros nodos son iguales (x[0] == x[1]). "
             "Los valores de x no pueden repetirse."
         )
 
@@ -17,10 +16,6 @@ def calcular_paso(x, tolerancia=1e-9):
         if abs(paso_actual - h) > tolerancia:
             raise ValueError(
                 "Los nodos no estan igualmente espaciados.\n"
-                f"    Paso esperado (x[1]-x[0]): {h}\n"
-                f"    Paso encontrado entre x[{i-1}] y x[{i}]: {paso_actual}\n"
-                "    Revisa que la diferencia entre valores consecutivos de x "
-                "sea siempre la misma."
             )
     return h
 
@@ -91,11 +86,11 @@ def pedir_entero(mensaje, minimo=None):
         try:
             valor = int(input(mensaje))
             if minimo is not None and valor < minimo:
-                print(f"  -> El valor debe ser mayor o igual a {minimo}. Intenta de nuevo.")
+                print(f"El valor debe ser mayor o igual a {minimo}. Intenta de nuevo.")
                 continue
             return valor
         except ValueError:
-            print("  -> Entrada invalida. Debes ingresar un numero entero. Intenta de nuevo.")
+            print("Entrada invalida. Debes ingresar un numero entero. Intenta de nuevo.")
 
 
 def pedir_flotante(mensaje):
@@ -103,7 +98,7 @@ def pedir_flotante(mensaje):
         try:
             return float(input(mensaje))
         except ValueError:
-            print("  -> Entrada invalida. Debes ingresar un numero (ej: 3.5). Intenta de nuevo.")
+            print("Entrada invalida. Debes ingresar un numero (ej: 3.5). Intenta de nuevo.")
 
 
 def pedir_opcion(mensaje, opciones):
