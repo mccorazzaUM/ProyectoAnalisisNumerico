@@ -161,7 +161,7 @@ def main():
     tabla = construir_tabla_diferencias(y)
 
     valor = pedir_flotante(
-        "\nInstante de tiempo (minutos) a estimar/predecir: "
+        "\nY a predecir estimar/predecir: "
     )
 
     if valor < min(x) or valor > max(x):
@@ -171,7 +171,7 @@ def main():
         )
 
     metodo = pedir_opcion(
-        "Metodo a utilizar [adelante=interpolar / atras=predecir a futuro]: ",
+        "Metodo a utilizar [adelante/atras]: ",
         ["adelante", "atras"],
     )
 
@@ -186,7 +186,7 @@ def main():
         return
 
     print(f"\nPaso h = {h}")
-    imprimir_tabla(x, tabla, nombre_x="t(min)", nombre_y="t.resp(ms)")
+    imprimir_tabla(x, tabla, nombre_x="t(s)", nombre_y="x(m)")
 
     print(f"\nVariable s = {s:.6f}")
     print(f"P({valor}) ≈ {resultado:.6f}")
