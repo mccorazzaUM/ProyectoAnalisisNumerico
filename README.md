@@ -44,6 +44,29 @@ $$P(x) = y_0 + s\,\Delta y_0 + \frac{s(s-1)}{2!}\,\Delta^2 y_0 + \frac{s(s-1)(s-
 
 $$P(x) = y_n + s\,\nabla y_n + \frac{s(s+1)}{2!}\,\nabla^2 y_n + \frac{s(s+1)(s+2)}{3!}\,\nabla^3 y_n + \dots$$
 
+# Aplicación de Ingeniería
+## Problema: monitoreo de un servidor web bajo prueba de carga
+Una de las métricas clave en el manejo de servidores es el tiempo de respuesta promedio (la latencia, medida en milisegundos): cuánto tarda el servidor en contestar una petición. A medida que aumenta la cantidad de peticiones, el servidor se satura y el tiempo de respuesta crece cada vez más rápido.
+
+Esta métrica no se puede medir todo el tiempo: el sistema de monitoreo toma muestras a intervalos regulares (por ejemplo, cada 5 minutos), no de forma continua. Este programa busca responder:
+- **Interpolación**: ¿Cuál fue el tiempo de respuesta en un minuto intermedio que no se midió (por ejemplo, el minuto 22)?
+- **Extrapolación (predicción)**: ¿Qué tiempo de respuesta se puede esperar un poco más allá del último instante medido (por ejemplo, el minuto 47), si la tendencia se mantiene? Esto sirve para anticipar cuando el servidor superara un umbral de latencia aceptable y decidir si escalar recursos.
+Durante una prueba de carga de 45 minutos se registró, cada 5 minutos, el tiempo de respuesta promedio del servidor. Se obtuvieron 10 puntos igualmente espaciados (h = 5 minutos):
+
+| Minuto | 0 | 5 | 10 | 15 | 20 | 25 | 30 | 35 | 40 | 45 |
+|--------|----|----|----|----|----|----|----|----|----|----|
+| Tiempo de respuesta (ms) | 95 | 108 | 124 | 145 | 172 | 205 | 246 | 295 | 355 | 428 |
+
+Los datos son crecientes y con curvatura cada vez más pronunciada, lo que refleja un servidor que se aproxima a la saturación: al principio la latencia sube despacio y hacia el final se dispara. Estas 10 mediciones son exactamente el dataset de ejemplo que trae el programa (opción `ejemplo`) y también están disponibles en el archivo `datos_ejemplo.csv` (opción ‘archivo’).
+
+**Resultado**
+
+Estimando el minuto 22 con el método hacia adelante, el polinomio devuelve:
+
+$$P(22) \approx 184.36 \text{ ms}$$
+
+un valor coherente porque cae entre las mediciones del minuto 20 (172 ms) y del minuto 25 (205 ms). El gráfico siguiente muestra los 10 puntos medidos, el polinomio aproximante $P(x)$ que pasa exactamente por todos ellos, y la estimación obtenida:
+
 # Estructura del Proyecto
 
 El programa consta de las siguientes funciones matemáticas:
